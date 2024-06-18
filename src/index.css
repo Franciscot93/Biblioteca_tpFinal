@@ -11,3 +11,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#FormularioBiblioteca{
+  display: flex;
+  flex-direction: column;
+  
+ 
+}
+.itemFormulario{
+  display: grid;
+  place-content: center;
+  place-items: center;
+}
