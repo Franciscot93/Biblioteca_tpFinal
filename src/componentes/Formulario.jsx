@@ -45,11 +45,13 @@ export default function Formulario({listaDeLibros,setRegistroParaEditar,listaDeS
       }else{
         setListaDeSocios([...listaDeSocios,{nombre:e.target.value.trim()}])
         
+        setRegistro(prev => ({ ...prev, socio: e.target.value.trim()}))
+        validar.socio(e.target.value.trim())
         localStorage.setItem('socios',JSON.stringify(listaDeSocios))
-        registro.socio=e.target.value.trim()
-        e.target.value=""
+        
        
       }
+      e.target.value=""
     }
    
   }
@@ -83,13 +85,13 @@ const validar = {
 
   const cargarRegistro=(e)=>{
     e.preventDefault()
-
-    if(camposValidos.libro&& camposValidos.socio&&camposValidos.telefono&&camposValidos.direccion&&camposValidos.fechaDevolucion && registro.id===""){
+    console.log(camposValidos)
+    if(camposValidos.libro&& camposValidos.socio&&camposValidos.telefono&&camposValidos.direccion&&camposValidos.fechaDevolucion && Object.keys(registroParaEditar).length=== 0){
       registro.id=generarId()
-      console.log('aqui')
+      console.log('aqui',Object.keys(registroParaEditar).length)
       setRegistros(prev =>[...prev,registro])
       setRegistro({
-        id:"",
+        id:"",       
        libro: "",
        socio: "",
        telefono: "",
@@ -105,14 +107,14 @@ const validar = {
        fechaDevolucion:null
       })
     }
-    if(registroParaEditar.id!=="" ){
+    if( Object.keys(registroParaEditar).length> 0 && camposValidos.libro&& camposValidos.socio&&camposValidos.telefono&&camposValidos.direccion&&camposValidos.fechaDevolucion ){
       console.log('en edicion', registro)
       
       const registrosEditados=registros.map(reg=> reg.id ===registro.id ? registro : reg)
       setRegistros(registrosEditados)
 
       setRegistro({
-        id:"",
+       id:"",
        libro: "",
        socio: "",
        telefono: "",
@@ -141,6 +143,7 @@ const validar = {
 
 useEffect(()=>{
   if(Object.keys(registroParaEditar).length> 0){
+    console.log('si')
     const{id,libro,socio,telefono,direccion,fechaDevolucion}=registroParaEditar
     setRegistro({id,libro,socio,telefono,direccion,fechaDevolucion})
  
@@ -217,8 +220,8 @@ useEffect(() => {
       </div>
       <div className='itemFormulario'>
       <TextField sx={{ m: 1, minWidth: 230, maxWidth: 230 }}
-          label="Nuevo socio"
-          placeholder='Nuevo socio'
+          label="Nombre y Apellido"
+          
           size="small"
           name='nuevoSocio'
           onBlur={(e)=>buscaSocio(e)}
@@ -266,7 +269,7 @@ useEffect(() => {
       <Stack direction="row">
       
       <Button type='submit'  variant="contained" sx={{m:1}} fullWidth={true} endIcon={<SendIcon />}>
-        {registro.id ?'Editar':'Agregar'}
+        {registro.id ?'Aceptar':'Agregar'}
       </Button>
       
     </Stack>

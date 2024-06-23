@@ -44,7 +44,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
         <TableBody>
           
           {registros.map((registro)=>{       
-            console.log(registro)
+            
        return (
         <RegistroSocio key={registro.id} registro={registro} setRegistroParaEditar={setRegistroParaEditar} eliminarRegistro={eliminarRegistro}/>
        )

@@ -16,12 +16,12 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.body}`]: {
       fontSize: 14,
     },
-    ['&@media (max-width: 960px)']: {
-        display: 'flex',
-        flexDirection: 'column',
-        flexWrap: 'wrap',
-        width: '100%',
-      },
+    // ['&@media (max-width: 960px)']: {
+    //     display: 'flex',
+    //     flexDirection: 'column',
+    //     flexWrap: 'wrap',
+    //     width: '100%',
+    //   },
   }));
   
   const StyledTableRow = styled(TableRow)(({ theme }) => ({
