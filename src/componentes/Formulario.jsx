@@ -76,7 +76,7 @@ const validar = {
     setCamposValidos(prev => ({ ...prev, direccion: valorDelCampo.length > 0 }));
   },
   fechaDevolucion: (valorDelCampo) => {
-    const fecha = new Date(valorDelCampo);
+   
     setCamposValidos(prev => ({ ...prev, fechaDevolucion: valorDelCampo.length>0 && Date(valorDelCampo) &&  new Date(valorDelCampo)> new Date() }));
   }
 };
@@ -86,9 +86,10 @@ const validar = {
 
     if(camposValidos.libro&& camposValidos.socio&&camposValidos.telefono&&camposValidos.direccion&&camposValidos.fechaDevolucion && registro.id===""){
       registro.id=generarId()
-
-      setRegistros([...registros,registro])
+      console.log('aqui')
+      setRegistros(prev =>[...prev,registro])
       setRegistro({
+        id:"",
        libro: "",
        socio: "",
        telefono: "",
@@ -104,15 +105,31 @@ const validar = {
        fechaDevolucion:null
       })
     }
-    if(registro.id!=="" ){
-      const{libro,socio,telefono,direccion,fechaDevolucion}=registro
-      console.log(camposValidos)
-    }
-    
-    
-    
-    
-    
+    if(registroParaEditar.id!=="" ){
+      console.log('en edicion', registro)
+      
+      const registrosEditados=registros.map(reg=> reg.id ===registro.id ? registro : reg)
+      setRegistros(registrosEditados)
+
+      setRegistro({
+        id:"",
+       libro: "",
+       socio: "",
+       telefono: "",
+       direccion: "",
+       fechaDevolucion:""
+      })
+   
+      setCamposValidos({
+        libro: null,
+        socio: null,
+        telefono: null,
+        direccion: null,
+        fechaDevolucion:null
+       })
+       setRegistroParaEditar({})
+  }
+       
     
     
   }
@@ -141,7 +158,7 @@ useEffect(() => {
   }
 }, [registro])
 
-console.log(camposValidos)
+
 
 
   const generarId = () => {
@@ -157,7 +174,7 @@ console.log(camposValidos)
     <form onSubmit={(e)=>cargarRegistro(e)} id='FormularioBiblioteca' component={Card} >
       <h3 className='titulo'>Registre un nuevo evento</h3>
       <div className='itemFormulario'>
-      <FormControl sx={{ m: 1, minWidth: 230, maxWidth: 230 }} size="small">
+      <FormControl sx={{ m: 1, minWidth: 230, maxWidth: 230 }}  size="small">
       <InputLabel  id="demo-select-medium-label">{camposValidos.libro!==false ?'Libros':'Libro ❌ '}</InputLabel>
       <Select
         labelId="demo-select-medium-label"

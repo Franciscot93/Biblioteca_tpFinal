@@ -23,3 +23,10 @@ code {
   place-content: center;
   place-items: center;
 }
+@media (max-width: 960px) {
+  .rowRegistro{
+    display: flex;
+  }
+
+
+}

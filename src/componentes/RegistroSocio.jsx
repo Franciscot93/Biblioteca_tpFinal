@@ -4,6 +4,8 @@ import EditIcon from '@mui/icons-material/Edit';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import { styled } from '@mui/material/styles';
 import TableRow from '@mui/material/TableRow';
+import { Button } from '@mui/base/Button';
+
 
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -14,20 +16,33 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.body}`]: {
       fontSize: 14,
     },
+    ['&@media (max-width: 960px)']: {
+        display: 'flex',
+        flexDirection: 'column',
+        flexWrap: 'wrap',
+        width: '100%',
+      },
   }));
   
   const StyledTableRow = styled(TableRow)(({ theme }) => ({
     '&:nth-of-type(odd)': {
       backgroundColor: theme.palette.action.hover,
     },
-    // hide last border
+    
     '&:last-child td, &:last-child th': {
       border: 0,
     },
+    '&:@media (max-width: 960px)': {
+        display: 'flex',
+        flexDirection: 'column',
+        flexWrap: 'wrap',
+        width: '100%',
+      },
+   
   }));
   
 
-const RegistroSocio = ({registro,eliminarRegistro,setRegistroParaEditar}) => {
+const RegistroSocio = ({registro,setRegistroParaEditar,eliminarRegistro}) => {
     const {id,libro,socio,telefono,direccion,fechaDevolucion}=registro
     
     const eligeEliminar=()=>{
@@ -42,7 +57,7 @@ const RegistroSocio = ({registro,eliminarRegistro,setRegistroParaEditar}) => {
     }
 
   return (
-    <StyledTableRow key={id}>
+    <StyledTableRow key={id} >
     <StyledTableCell component="th" scope="row">
       {libro}
     </StyledTableCell>
@@ -50,8 +65,8 @@ const RegistroSocio = ({registro,eliminarRegistro,setRegistroParaEditar}) => {
     <StyledTableCell align="left">{telefono}</StyledTableCell>
     <StyledTableCell align="left">{direccion}</StyledTableCell>
     <StyledTableCell align="left">{fechaDevolucion}</StyledTableCell>
-    <StyledTableCell align="left"><EditIcon  onClick={eligeEditar}/></StyledTableCell>
-    <StyledTableCell align="left"><DeleteIcon  onClick={eligeEliminar}  /></StyledTableCell>
+    <StyledTableCell align="left"><Button><EditIcon  onClick={eligeEditar}/></Button></StyledTableCell>
+    <StyledTableCell align="left"><Button><DeleteIcon  onClick={eligeEliminar}  /></Button></StyledTableCell>
   </StyledTableRow>
   )
 }

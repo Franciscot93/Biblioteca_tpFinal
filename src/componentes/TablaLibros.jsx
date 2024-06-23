@@ -17,17 +17,19 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.body}`]: {
       fontSize: 14,
     },
+    
+    
   }));
   
   
   
   
-  const TablaLibros = ({registros,eliminarRegistro,setRegistroParaEditar}) => {
+  const TablaLibros = ({registros,setRegistroParaEditar,eliminarRegistro}) => {
     
   return (
     <TableContainer component={Card}>
         <h3 className='titulo'>Alquileres registrados</h3>
-      <Table sx={{ minWidth: 700 }} aria-label="customized table">
+      <Table  aria-label="customized table">
         <TableHead>
           <TableRow>
             <StyledTableCell align='left'>Libro</StyledTableCell>
@@ -40,9 +42,13 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
           </TableRow>
         </TableHead>
         <TableBody>
-          {registros?.length>0 ?registros.map((registro) => (
-           <RegistroSocio key={registro.id} registro={registro} setRegistroParaEditar={setRegistroParaEditar} eliminarRegistro={eliminarRegistro}/>
-          )):null}
+          
+          {registros.map((registro)=>{       
+            console.log(registro)
+       return (
+        <RegistroSocio key={registro.id} registro={registro} setRegistroParaEditar={setRegistroParaEditar} eliminarRegistro={eliminarRegistro}/>
+       )
+     })}
         </TableBody>
       </Table>
     </TableContainer>
