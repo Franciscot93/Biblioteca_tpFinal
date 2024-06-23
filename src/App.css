@@ -6,3 +6,9 @@
 .titulo{
     text-align: center;
 }
+
+@media (max-width: 960px) {
+    #Contenedor {
+        flex-direction: column; 
+    }
+}

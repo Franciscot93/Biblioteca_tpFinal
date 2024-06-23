@@ -1,3 +1,4 @@
+import {  useEffect, useState } from 'react';
 import './App.css';
 import Formulario from './componentes/Formulario';
 import TablaLibros from './componentes/TablaLibros';
@@ -20,17 +21,32 @@ const socios=[
   {nombre:'Cristiano Ronaldo'}
   
 ]
-const registros=[]
-localStorage.setItem('libros',JSON.stringify(libros))
-localStorage.setItem('socios',JSON.stringify(socios))
-localStorage.setItem('registros',JSON.stringify(registros))
+
+
 function App() {
+  const [listaDeLibros,setListaDeLibros]=useState(libros)
+ const [listaDeSocios,setListaDeSocios]=useState(JSON.parse(localStorage.getItem('socios'))||socios)
+ const [registros,setRegistros]=useState(JSON.parse(localStorage.getItem('registros'))||[])
+ const [registroParaEditar,setRegistroParaEditar]=useState({})
+
+ const eliminarRegistro=(id)=>{
+  const registrosActualizados=registros.filter(registro=> registro.id!==id)
+  setRegistros(registrosActualizados)
+ }
+ useEffect(()=>{
+  localStorage.setItem('registros', JSON.stringify(registros))
+},[registros])
+
+useEffect(()=>{
+  localStorage.setItem('socios', JSON.stringify(listaDeSocios))
+},[listaDeSocios])
+
   return (
     <div>
       <h2 className='titulo'>Biblioteca</h2>
     <div className="App" id='Contenedor'>
-      <Formulario/>
-      <TablaLibros/>
+      <Formulario listaDeLibros={listaDeLibros} setRegistroParaEditar={setRegistroParaEditar} listaDeSocios={listaDeSocios} setListaDeSocios={setListaDeSocios} setRegistros={setRegistros} registros={registros} registroParaEditar={registroParaEditar}/>
+      <TablaLibros registros={registros} setRegistroParaEditar={setRegistroParaEditar}  eliminarRegistro={eliminarRegistro}/>
     </div>
     </div>
   );
