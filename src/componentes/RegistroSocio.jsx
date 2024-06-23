@@ -65,8 +65,8 @@ const RegistroSocio = ({registro,setRegistroParaEditar,eliminarRegistro}) => {
     <StyledTableCell align="left">{telefono}</StyledTableCell>
     <StyledTableCell align="left">{direccion}</StyledTableCell>
     <StyledTableCell align="left">{fechaDevolucion}</StyledTableCell>
-    <StyledTableCell align="left"><Button><EditIcon  onClick={eligeEditar}/></Button></StyledTableCell>
-    <StyledTableCell align="left"><Button><DeleteIcon  onClick={eligeEliminar}  /></Button></StyledTableCell>
+    <StyledTableCell align="left"><Button><EditIcon sx={{color:'#059669'}}  onClick={eligeEditar}/></Button></StyledTableCell>
+    <StyledTableCell align="left"><Button><DeleteIcon sx={{color:'#B91C1C'}} onClick={eligeEliminar}  /></Button></StyledTableCell>
   </StyledTableRow>
   )
 }

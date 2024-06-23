@@ -6,9 +6,9 @@ import Select from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
 import Card from '@mui/material/Card';
 import Button from '@mui/material/Button';
-import SendIcon from '@mui/icons-material/Send';
+import AddIcon from '@mui/icons-material/Add';
 import Stack from '@mui/material/Stack';
-
+import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
 
 
 export default function Formulario({listaDeLibros,setRegistroParaEditar,listaDeSocios,setListaDeSocios,setRegistros,registros,registroParaEditar}) {
@@ -282,9 +282,9 @@ useEffect(() => {
         />
       </div>
       
-      <Stack direction="row">
+      <Stack direction="row"> 
       
-      <Button type='submit'  variant="contained" sx={{m:1}} fullWidth={true} endIcon={<SendIcon />}>
+      <Button type='submit'  variant="contained" sx={{m:1,paddingY:1,bgcolor:`${registro.id?'#059669':'#06B6D4'}`}} fullWidth={true} endIcon={registro.id?<AutoFixHighIcon/>:<AddIcon/>}>
         {registro.id ?'Aceptar':'Agregar'}
       </Button>
       

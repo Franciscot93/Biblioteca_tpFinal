@@ -2,6 +2,8 @@ import {  useEffect, useState } from 'react';
 import './App.css';
 import Formulario from './componentes/Formulario';
 import TablaLibros from './componentes/TablaLibros';
+import Nav from './componentes/Nav';
+import Footer from './componentes/Footer';
 
 const libros=[
   {nombre:'C# Fundamentals'},
@@ -43,11 +45,13 @@ useEffect(()=>{
 
   return (
     <div>
-      <h2 className='titulo'>Biblioteca</h2>
+      <Nav registros={registros} listaDeSocios={listaDeSocios}/>
     <div className="App" id='Contenedor'>
       <Formulario listaDeLibros={listaDeLibros} setRegistroParaEditar={setRegistroParaEditar} listaDeSocios={listaDeSocios} setListaDeSocios={setListaDeSocios} setRegistros={setRegistros} registros={registros} registroParaEditar={registroParaEditar}/>
       <TablaLibros registros={registros} setRegistroParaEditar={setRegistroParaEditar}  eliminarRegistro={eliminarRegistro}/>
     </div>
+    
+    <Footer/>
     </div>
   );
 }

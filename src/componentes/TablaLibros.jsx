@@ -7,6 +7,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Card from '@mui/material/Card'
 
+
 import RegistroSocio from './RegistroSocio';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -41,6 +42,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
             <StyledTableCell align="left"></StyledTableCell>
           </TableRow>
         </TableHead>
+        
         <TableBody>
           
           {registros.map((registro)=>{       
