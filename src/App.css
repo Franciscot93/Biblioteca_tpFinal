@@ -1,7 +1,7 @@
 #Contenedor{
     display: flex;
-    
-
+    min-height: 100%;
+    margin-bottom: 4rem;
 }
 
 .titulo{
@@ -13,3 +13,4 @@
         flex-direction: column; 
     }
 }
+
