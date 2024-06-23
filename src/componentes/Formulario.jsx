@@ -175,10 +175,11 @@ useEffect(() => {
  
   return (
     <form onSubmit={(e)=>cargarRegistro(e)} id='FormularioBiblioteca' component={Card} >
-      <h3 className='titulo'>Registre un nuevo evento</h3>
+      <h3 className='titulo'>Presta un libro</h3>
       <div className='itemFormulario'>
-      <FormControl sx={{ m: 1, minWidth: 230, maxWidth: 230 }}  size="small">
-      <InputLabel  id="demo-select-medium-label">{camposValidos.libro!==false ?'Libros':'Libro ❌ '}</InputLabel>
+      <div className='itemError'>{camposValidos.libro===false ?'❌':null}<div className='textoError'>{camposValidos.libro===false ?'Debe seleccionar un libro':null}</div></div>
+      <FormControl sx={{ marginBottom: 2,marginX:1, minWidth: 230, maxWidth: 230 }}  size="small">
+      <InputLabel  id="demo-select-medium-label">Libro</InputLabel>
       <Select
         labelId="demo-select-medium-label"
         onBlur={(e)=>validar.libro(e.target.value)}
@@ -194,9 +195,14 @@ useEffect(() => {
             listaDeLibros.length>0?(listaDeLibros.map((libro,index)=>{return <MenuItem  key={index} value={libro.nombre}>{libro.nombre}</MenuItem>})):null
         }
       </Select>
+      
       </FormControl>
-      <FormControl sx={{ m: 1, minWidth: 230, maxWidth: 230 }} size="small">
-      <InputLabel  id="demo-select-small-label">{camposValidos.socio!==false ?'Socio':'Socio ❌'}</InputLabel>
+      </div>
+      <div className='itemFormulario'>
+      <div className='itemError'>{camposValidos.socio===false ?'❌':null}<div className='textoError'>{camposValidos.socio===false ?'Debe seleccionar un socio':null}</div></div>
+      <FormControl sx={{ marginBottom: 2,marginX:1, minWidth: 230, maxWidth: 230 }} size="small">
+        
+      <InputLabel  id="demo-select-small-label">Socio</InputLabel>
       <Select
         labelId="demo-select-small-label"
         onBlur={(e)=>validar.socio(e.target.value)}
@@ -212,6 +218,7 @@ useEffect(() => {
             listaDeSocios.length>0?(listaDeSocios.map((socio,index)=>{return <MenuItem  key={index} value={socio.nombre}>{socio.nombre}</MenuItem>})):null
         }
       </Select>
+      
 
 
       
@@ -219,7 +226,7 @@ useEffect(() => {
       
       </div>
       <div className='itemFormulario'>
-      <TextField sx={{ m: 1, minWidth: 230, maxWidth: 230 }}
+      <TextField sx={{ marginBottom: 2,marginX:1, minWidth: 230, maxWidth: 230 }}
           label="Nombre y Apellido"
           
           size="small"
@@ -228,8 +235,12 @@ useEffect(() => {
           
           
         />
-        <TextField sx={{ m: 1, minWidth: 230, maxWidth: 230 }}
-          label={camposValidos.telefono!==false ?'Telefono':'Ingrese un telefóno ❌'}
+        </div>
+        <div className='itemFormulario'>
+        <div className='itemError'>{camposValidos.telefono===false ?'❌':null}<div className='textoError'>{camposValidos.telefono===false ?'ingrese un telefono':null}</div></div>
+
+        <TextField sx={{ marginBottom: 2,marginX:1, minWidth: 230, maxWidth: 230 }}
+          label='Telefono'
           onBlur={(e)=>validar.telefono(e.target.value)}
           placeholder="Teléfono"
           size="small"
@@ -241,8 +252,10 @@ useEffect(() => {
 
       </div>
       <div className='itemFormulario'>
-      <TextField sx={{ m: 1, minWidth: 230, maxWidth: 230 }}
-          label={camposValidos.direccion!==false ?'Direccion':'Ingrese una dirección ❌'}
+      <div className='itemError'>{camposValidos.direccion===false ?'❌':null}<div className='textoError'>{camposValidos.direccion===false ?'Ingrese una dirección':null}</div></div>
+
+      <TextField sx={{ marginBottom: 2,marginX:1, minWidth: 230, maxWidth: 230 }}
+          label='Dirección'
           id="outlined-size-small"
           placeholder="Direccion"
           size="small"
@@ -255,9 +268,12 @@ useEffect(() => {
          
           
         />
-      
-      <TextField sx={{ m: 1, minWidth: 230, maxWidth: 230 }}
-          label={registro.fechaDevolucion.length>0 ?'Fecha de devolución':camposValidos.fechaDevolucion===false?'❌':null}        
+      </div>
+      <div className='itemFormulario'>
+      <div className='itemError'>{camposValidos.fechaDevolucion===false?'❌ ':null}<div className='textoError'>{camposValidos.fechaDevolucion===false ?'Seleccione una fecha valida':null}</div></div>
+
+      <TextField sx={{ marginBottom: 2,marginX:1, minWidth: 230, maxWidth: 230 }}
+          label={registro.fechaDevolucion.length>0 ?'Fecha de devolución':null}        
           value={registro.fechaDevolucion}        
           size="small"
           name="fechaDevolucion"

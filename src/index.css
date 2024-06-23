@@ -14,19 +14,53 @@ code {
 
 #FormularioBiblioteca{
   display: flex;
-  flex-direction: column;
+   flex-direction: column;
   
  
 }
+.itemError{
+  display: flex;
+  flex-direction: row-reverse;
+  position: absolute;
+  bottom: 0; 
+  right: 10px;
+  font-size: small;
+  
+  
+}
+.itemError > .textoError{
+  opacity: 0;
+  font-size: small;
+  color: #CB4154;
+  font-weight: bold;
+  
+}
+
+.itemError:hover .textoError{
+  
+  opacity: 1;
+  
+}
+
 .itemFormulario{
   display: grid;
+  position: relative;
   place-content: center;
   place-items: center;
+  grid-gap: 1;
+  padding-top: 1.5px;
 }
 @media (max-width: 960px) {
   .rowRegistro{
     display: flex;
   }
-
+  .itemError{
+   
+    top: 0; 
+    right: 20rem;
+    
+    
+    
+  }
 
 }

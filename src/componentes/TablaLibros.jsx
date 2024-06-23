@@ -28,7 +28,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     
   return (
     <TableContainer component={Card}>
-        <h3 className='titulo'>Alquileres registrados</h3>
+        <h3 className='titulo'>Libros prestados</h3>
       <Table  aria-label="customized table">
         <TableHead>
           <TableRow>
