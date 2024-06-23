@@ -1,4 +1,4 @@
-
+import Typography from '@mui/material/Typography';
 export default function Footer() {
 
 
@@ -6,7 +6,9 @@ export default function Footer() {
 
   return (
     <div id='Footer'>
-        Desarrollo de front end - Examen Final Integrador
+       
+            Desarrollo front end - Examen Final Integrador
+         
     </div>
   )
 }
